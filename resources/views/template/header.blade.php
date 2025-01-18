@@ -4,12 +4,12 @@
       <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/logo.png" alt=""> -->
-        <h1 class="sitename">ZenBlog</h1>
+        <h1 class="sitename">Deru Majalengka Bangkit</h1>
       </a>
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="{{}}" class="active">Home</a></li>
+          <li class="{{ Route::is('home') ? 'active' : '' }}"><a href="/">Home</a></li>
           <li><a href="about.html">About</a></li>
           <li class="dropdown"><a href="#"><span>Categories</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
@@ -29,6 +29,7 @@
             </ul>
           </li>
           <li><a href="contact.html">Contact</a></li>
+          <li><a href="{{ route('login') }} ">Login</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>

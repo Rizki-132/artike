@@ -10,7 +10,7 @@
       <nav id="navmenu" class="navmenu">
         <ul>
           <li class="{{ Route::is('home') ? 'active' : '' }}"><a href="/">Home</a></li>
-          <li><a href="about.html">About</a></li>
+          <li><a href="/about">About</a></li>
           <li class="dropdown"><a href="#"><span>Categories</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="category.html">Category 1</a></li>

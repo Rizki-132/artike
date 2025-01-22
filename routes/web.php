@@ -25,17 +25,17 @@ Route::get('/dashboard', function () {
     return view('admin.admin');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/form', function () {
-    return view('admin.form');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/form', function () {
+//     return view('admin.form');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/kategori', function () {
-    return view('admin.kategori');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/kategori', function () {
+//     return view('admin.kategori');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/tabel', function () {
-    return view('admin.tabel');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/tabel', function () {
+//     return view('admin.tabel');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 
 Route::middleware('auth')->group(function () {

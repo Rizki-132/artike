@@ -112,12 +112,12 @@
                 <div class="collapse" id="forms">
                   <ul class="nav nav-collapse">
                     <li>
-                      <a href="/form">
+                      <a href="{{ route('berita.index') }}">
                         <span class="sub-item">Masukan Berita</span>
                       </a>
                     </li>
                     <li>
-                      <a href="/kategori">
+                      <a href="{{ route('kategori.index') }}">
                         <span class="sub-item">Masukan Kategori</span>
                       </a>
                     </li>

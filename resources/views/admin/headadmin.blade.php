@@ -9,12 +9,12 @@
     />
     <link
       rel="icon"
-      href="assets/img/Deru majalengka.png"
+      href="{{ asset('assets/img/Deru majalengka.png')}}"
       type="image/x-icon"
     />
 
     <!-- Fonts and icons -->
-    <script src="assets3/js/plugin/webfont/webfont.min.js"></script>
+    <script src="{{ asset('assets3/js/plugin/webfont/webfont.min.js') }}"></script>
     <script>
       WebFont.load({
         google: { families: ["Public Sans:300,400,500,600,700"] },
@@ -25,7 +25,7 @@
             "Font Awesome 5 Brands",
             "simple-line-icons",
           ],
-          urls: ["assets3/css/fonts.min.css"],
+          urls: ["{{ asset('assets3/css/fonts.min.css') }}"],
         },
         active: function () {
           sessionStorage.fonts = true;
@@ -34,12 +34,12 @@
     </script>
 
     <!-- CSS Files -->
-    <link rel="stylesheet" href="assets3/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="assets3/css/plugins.min.css" />
-    <link rel="stylesheet" href="assets3/css/kaiadmin.min.css" />
+    <link rel="stylesheet" href="{{asset('assets3/css/bootstrap.min.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets3/css/plugins.min.css')}}" />
+    <link rel="stylesheet" href="{{ asset('assets3/css/kaiadmin.min.css')}}" />
 
     <!-- CSS Just for demo purpose, don't include it in your project -->
-    <link rel="stylesheet" href="assets3/css/demo.css" />
+    <link rel="stylesheet" href="{{ asset('assets3/css/demo.css') }}" />
   </head>
   <body>
     <div class="wrapper">
@@ -50,7 +50,7 @@
           <div class="logo-header" data-background-color="dark">
             <a href="/dashboard" class="logo">
               <img
-                src="assets/img/Deru majalengka.png"
+                src="{{ asset('assets/img/Deru majalengka.png') }}"
                 alt="navbar brand"
                 class="navbar-brand"
                 height="40"
@@ -264,7 +264,7 @@
             <div class="logo-header" data-background-color="dark">
               <a href="index.html" class="logo">
                 <img
-                  src="assets/img/Deru majalengka.png"
+                  src="{{ asset('assets/img/Deru majalengka.png') }}"
                   alt="navbar brand"
                   class="navbar-brand"
                   height="20"
@@ -331,7 +331,7 @@
                   >
                     <div class="avatar-sm">
                       <img
-                        src="assets3/img/profile.jpg"
+                        src="{{ asset('assets3/img/profile.jpg') }}"
                         alt="..."
                         class="avatar-img rounded-circle"
                       />
@@ -347,7 +347,7 @@
                         <div class="user-box">
                           <div class="avatar-lg">
                             <img
-                              src="assets3/img/profile.jpg"
+                              src="{{ asset('assets3/img/profile.jpg') }}"
                               alt="image profile"
                               class="avatar-img rounded"
                             />
@@ -606,41 +606,41 @@
       <!-- End Custom template -->
     </div>
     <!--   Core JS Files   -->
-    <script src="assets3/js/core/jquery-3.7.1.min.js"></script>
-    <script src="assets3/js/core/popper.min.js"></script>
-    <script src="assets3/js/core/bootstrap.min.js"></script>
+    <script src="{{ asset('assets3/js/core/jquery-3.7.1.min.js')}}"></script>
+    <script src="{{ asset('assets3/js/core/popper.min.js')}}"></script>
+    <script src="{{ asset('assets3/js/core/bootstrap.min.js') }}"></script>
 
     <!-- jQuery Scrollbar -->
-    <script src="assets3/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+    <script src="{{ asset('assets3/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js') }}"></script>
 
     <!-- Chart JS -->
-    <script src="assets3/js/plugin/chart.js/chart.min.js"></script>
+    <script src="{{ asset('assets3/js/plugin/chart.js/chart.min.js') }}"></script>
 
     <!-- jQuery Sparkline -->
-    <script src="assets3/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
+    <script src="{{ asset('assets3/js/plugin/jquery.sparkline/jquery.sparkline.min.js') }}"></script>
 
     <!-- Chart Circle -->
-    <script src="assets3/js/plugin/chart-circle/circles.min.js"></script>
+    <script src="{{ asset('assets3/js/plugin/chart-circle/circles.min.js')}}"></script>
 
     <!-- Datatables -->
-    <script src="assets3/js/plugin/datatables/datatables.min.js"></script>
+    <script src="{{ asset('assets3/js/plugin/datatables/datatables.min.js') }}"></script>
 
     <!-- Bootstrap Notify -->
-    <script src="assets3/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
+    <script src="{{ asset('assets3/js/plugin/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
 
     <!-- jQuery Vector Maps -->
-    <script src="assets3/js/plugin/jsvectormap/jsvectormap.min.js"></script>
-    <script src="assets3/js/plugin/jsvectormap/world.js"></script>
+    <script src="{{ asset('assets3/js/plugin/jsvectormap/jsvectormap.min.js') }}"></script>
+    <script src="{{ asset('assets3/js/plugin/jsvectormap/world.js') }}"></script>
 
     <!-- Sweet Alert -->
-    <script src="assets3/js/plugin/sweetalert/sweetalert.min.js"></script>
+    <script src="{{ asset('assets3/js/plugin/sweetalert/sweetalert.min.js')}}"></script>
 
     <!-- Kaiadmin JS -->
-    <script src="assets3/js/kaiadmin.min.js"></script>
+    <script src="{{ asset('assets3/js/kaiadmin.min.js') }}"></script>
 
     <!-- Kaiadmin DEMO methods, don't include it in your project! -->
-    <script src="assets3/js/setting-demo.js"></script>
-    <script src="assets3/js/demo.js"></script>
+    <script src="{{ asset('assets3/js/setting-demo.js') }}"></script>
+    <script src="{{ asset('assets3/js/demo.js') }}"></script>
     <script>
       $("#lineChart").sparkline([102, 109, 120, 99, 110, 105, 115], {
         type: "line",

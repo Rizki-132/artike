@@ -1,6 +1,5 @@
 @extends('admin.headadmin')
 @section('content')
-    
 <div class="container">
     <div class="page-inner">
       <div class="page-header">

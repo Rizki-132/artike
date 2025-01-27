@@ -50,10 +50,10 @@
                         class="form-control"
                         id="email2"
                         placeholder="Masukan Judul"
+                        name="judul"
                       />
                       <small id="emailHelp2" class="form-text text-muted"
-                        >We'll never share your email with anyone
-                        else.</small
+                        >Msukan Judul berita untuk di posting</small
                       >
                     </div>
                     <div class="form-group">

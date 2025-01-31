@@ -30,12 +30,13 @@ class BeritaController extends Controller
         //Validasi input
         $validateDa = $request->validate([
             'gambar' => 'required|image|mimes:jpeg,png,jpg|max:2048', // maksimum ukuran 2mb
-            'judul' => 'required|string|max:255',
+            'judul' => 'required|string|max:255|unique:beritas, judul',
             'kategori_id' => 'required|integer|exists:kategori,id', //pastikan kategori valid
             'desk_singkat' => 'required|string|max:500',
             'desk_detail' => 'required|string',
         ]);
-
+ 
+            
         //proses upload gambar
         if ($request->hasFile('gambar')){
             $fileName = time() . '_' . $request->file('gambar')->getClientOriginalName();
@@ -43,7 +44,18 @@ class BeritaController extends Controller
             $validatedData['gambar'] = $path; // Tambahkan path ke array data yang tervalidasi
         }
 
-        Berita::create($validatedData);
+        // Berita::create($validatedData);
+
+        //buat slug unique berdasarkan judul
+        $slug = Str::slug($validatedData['judul']);
+        $count = Berita::where('judul', 'LIKE', "{$validatedData['judul']}%")->count();
+        if ($count > 0) {
+            $slug .= '-' . $count;
+        }
+        // Simpan data
+        $berita = new Berita($validatedData);
+        $berita->slug = $slug;
+        $berita->save();
 
         return redirect()->route('admin.berita.tabel')->with('succes','Berita berhasil di tambahkan');
     }
@@ -53,7 +65,8 @@ class BeritaController extends Controller
      */
     public function show(string $id)
     {
-        //
+        // $berita = Berita::whereRaw("LOWER(REPLACE(judul, ' ', '-')) = ?", [strtolower($slug)])->firstOrFail();
+        // return view('berita.show', compact('berita'));
     }
 
     /**

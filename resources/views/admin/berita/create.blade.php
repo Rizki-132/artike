@@ -34,56 +34,62 @@
                 <div class="row">
                   <div class="col-md-6 col-lg-12">
                     <div class="form-group">
-                      <label for="exampleFormControlFile1"
-                        >Masukan Gambar</label
-                      >
-                      <input
-                        type="file"
-                        class="form-control-file"
-                        id="exampleFormControlFile1"
-                      />
-                    </div>
-                    <div class="form-group">
-                      <label for="text">Judul Berita</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="email2"
-                        placeholder="Masukan Judul"
-                        name="judul"
-                      />
-                      <small id="emailHelp2" class="form-text text-muted"
-                        >Msukan Judul berita untuk di posting</small
-                      >
-                    </div>
-                    <div class="form-group">
-                      <label for="largeSelect">Pilih Kategori</label>
-                      <select
-                        class="form-select form-control-lg"
-                        id="largeSelect"
-                      >
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                      </select>
-                    </div>
-                    <div class="form-group">
-                      <label for="text">Descripsi singkat</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="password"
-                        placeholder="Msukan Deksripsi singkat"
-                      />
-                    </div>
-              
-                    <div class="form-group">
-                      <label for="des_detail">Deskripsi Panjang</label>
-                      <textarea class="form-control" id="comment" rows="5">
-                      </textarea>
-                    </div>
+                      <form action="{{ route('berita.store') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                          <label for="exampleFormControlFile1"
+                            >Masukan Gambar</label
+                          >
+                          <input
+                            type="file"
+                            class="form-control-file"
+                            id="exampleFormControlFile1"
+                            name="gambar"
+                          />
+                        </div>
+                        <div class="form-group">
+                          <label for="text">Judul Berita</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="email2"
+                            placeholder="Masukan Judul"
+                            name="judul"
+                          />
+                          <small id="emailHelp2" class="form-text text-muted"
+                            >Msukan Judul berita untuk di posting</small
+                          >
+                        </div>
+                        <div class="form-group">
+                          <label for="largeSelect">Pilih Kategori</label>
+                          <select
+                            class="form-select form-control-lg"
+                            id="largeSelect"
+                            name="kategori_id"
+                          >
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <label for="text">Descripsi singkat</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="password"
+                            placeholder="Msukan Deksripsi singkat"
+                            name="desk_singkat"
+                          />
+                        </div>
+                  
+                        <div class="form-group">
+                          <label for="des_detail">Deskripsi Panjang</label>
+                          <textarea class="form-control" id="comment" rows="5" name="desk_detail">
+                          </textarea>
+                        </div>
+                      </form>
                   </div>
               
                 </div>

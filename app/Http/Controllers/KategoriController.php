@@ -27,7 +27,9 @@ class KategoriController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //membuat request data
+        
+        
     }
 
     /**

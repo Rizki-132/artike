@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Berita;
+use App\Models\Kategori;
 use Illuminate\Http\Request;
 
 class BeritaController extends Controller
@@ -19,7 +20,8 @@ class BeritaController extends Controller
      */
     public function create()
     {
-        return view('admin.berita.create');
+        $kategori = Kategori::all();
+        return view('admin.berita.create',compact('kategori'));
     }
 
     /**
@@ -28,7 +30,7 @@ class BeritaController extends Controller
     public function store(Request $request)
     {
         //Validasi input
-        $validateDa = $request->validate([
+        $validateData = $request->validate([
             'gambar' => 'required|image|mimes:jpeg,png,jpg|max:2048', // maksimum ukuran 2mb
             'judul' => 'required|string|max:255|unique:beritas, judul',
             'kategori_id' => 'required|integer|exists:kategori,id', //pastikan kategori valid
@@ -57,7 +59,7 @@ class BeritaController extends Controller
         $berita->slug = $slug;
         $berita->save();
 
-        return redirect()->route('admin.berita.tabel')->with('succes','Berita berhasil di tambahkan');
+        return redirect()->route('berita.index')->with('succes','Berita berhasil di tambahkan');
     }
 
     /**

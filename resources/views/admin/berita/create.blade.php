@@ -66,11 +66,10 @@
                             id="largeSelect"
                             name="kategori_id"
                           >
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
+                          <option>-- Pilih Kategori --</option>
+                          @foreach ($kategori as $data)
+                            <option>{{ $data->nama }}</option>
+                          @endforeach
                           </select>
                         </div>
                         <div class="form-group">

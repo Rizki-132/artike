@@ -33,18 +33,21 @@
             <div class="card-body">
               <div class="row">
                 <div class="col-md-6 col-lg-12">
-               
                   <div class="form-group">
+                   <form action="{{ route('kategori.store') }}" method="POST">
+                    @csrf
                     <label for="text">Masukan Kategori</label>
                     <input
                       type="text"
                       class="form-control"
                       id="email2"
                       placeholder="Masukan Kategori"
+                      name="nama"
                     />
                     <small id="emailHelp2" class="form-text text-muted"
                       >Masukan kategori untuk di munculkan</small
                     >
+                 
                   </div>
                 </div>
              
@@ -54,6 +57,7 @@
               <button class="btn btn-success">Submit</button>
               <button class="btn btn-danger">Cancel</button>
             </div>
+          </form>
           </div>
         </div>
       </div>

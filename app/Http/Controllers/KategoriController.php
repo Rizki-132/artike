@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Kategori;
 use Illuminate\Http\Request;
 
 class KategoriController extends Controller
@@ -11,7 +11,8 @@ class KategoriController extends Controller
      */
     public function index()
     {
-       return view('admin.kategori.tabel');
+       $kategori = Kategori::all();
+       return view('admin.kategori.tabel',compact('kategori'));
     }
 
     /**
@@ -28,8 +29,14 @@ class KategoriController extends Controller
     public function store(Request $request)
     {
         //membuat request data
+        $validateData = $request->validate([
+            'nama' => 'required|string'
+        ]);
         
-        
+        $kategori = new Kategori($validateData);
+        $kategori->save();
+
+        return redirect()->route('kategori.index')->with('succes','Kategori berhasil di tambahkan');
     }
 
     /**

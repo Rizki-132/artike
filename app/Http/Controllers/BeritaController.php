@@ -12,6 +12,7 @@ class BeritaController extends Controller
      */
     public function index()
     {
+        
         return view('admin.berita.tabel');
     }
 
@@ -29,36 +30,27 @@ class BeritaController extends Controller
      */
     public function store(Request $request)
     {
+       
         //Validasi input
-        $validateData = $request->validate([
+        $validated = $request->validate([
             'gambar' => 'required|image|mimes:jpeg,png,jpg|max:2048', // maksimum ukuran 2mb
-            'judul' => 'required|string|max:255|unique:beritas, judul',
+            'judul' => 'required|string|unique:beritas,judul',
             'kategori_id' => 'required|integer|exists:kategori,id', //pastikan kategori valid
             'desk_singkat' => 'required|string|max:500',
             'desk_detail' => 'required|string',
         ]);
  
-            
-        //proses upload gambar
-        if ($request->hasFile('gambar')){
-            $fileName = time() . '_' . $request->file('gambar')->getClientOriginalName();
-            $path = $request->file('gambar')->storeAs('uploads/berita', $fileName, 'public');
-            $validatedData['gambar'] = $path; // Tambahkan path ke array data yang tervalidasi
-        }
+        $path = $request->file('gambar')->store('berita', 'public');
 
-        // Berita::create($validatedData);
 
-        //buat slug unique berdasarkan judul
-        $slug = Str::slug($validatedData['judul']);
-        $count = Berita::where('judul', 'LIKE', "{$validatedData['judul']}%")->count();
-        if ($count > 0) {
-            $slug .= '-' . $count;
-        }
-        // Simpan data
-        $berita = new Berita($validatedData);
-        $berita->slug = $slug;
-        $berita->save();
-
+       Berita::create([
+            'judul' => $validated['judul'],
+            'kategori_id' => $validated['kategori_id'],
+            'desk_singkat' => $validated['desk_singkat'],
+            'desk_detail' => $validated['desk_detail'],
+            'gambar' => $path,
+        ]);
+        
         return redirect()->route('berita.index')->with('succes','Berita berhasil di tambahkan');
     }
 

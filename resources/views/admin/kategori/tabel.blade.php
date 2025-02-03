@@ -104,11 +104,10 @@
                       <th style="width: 10%">Action</th>
                     </tr>
                   </thead>
-                  <tbody>      
+                  <tbody>
+                    @foreach ($kategori as $data)         
                     <tr>
-                      @foreach ($kategori as $data)   
                       <td>{{ $data->nama }}</td>
-                      @endforeach
                       <td>
                         <div class="form-button-action">
                           <button
@@ -132,6 +131,7 @@
                         </div>
                       </td>
                     </tr>
+                    @endforeach
                   </tbody>
                 </table>
               </div>

@@ -88,7 +88,6 @@
                           <textarea class="form-control" id="comment" rows="5" name="desk_detail">
                           </textarea>
                         </div>
-                      </form>
                   </div>
               
                 </div>
@@ -97,6 +96,7 @@
                 <button class="btn btn-success">Submit</button>
                 <button class="btn btn-danger">Cancel</button>
               </div>
+            </form>
             </div>
           </div>
         </div>

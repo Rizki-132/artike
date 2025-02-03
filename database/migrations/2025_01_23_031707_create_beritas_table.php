@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('beritas', function (Blueprint $table) {
             $table->id();
             $table->string('gambar');
-            $table->string('judul')->unique();
+            $table->string('judul');
             $table->unsignedBigInteger('kategori_id')->foreign('kategori_id')->references('id')->on('kategoris')->onDelete('cascade');
             $table->string('desk_singkat');
             $table->text('desk_detail');

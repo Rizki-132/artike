@@ -9,6 +9,7 @@ class Berita extends Model
 {
     use HasFactory;
 
+    protected $table = 'beritas';
     protected $fillable = [
         'gambar', 
         'judul',
@@ -19,13 +20,13 @@ class Berita extends Model
     ];
 
     // untuk merubah judul menjadi slug
-    protected static function boot(): void
-    {
-        parent::boot();
-        static::creating(function (Berita $berita) {
-            $berita->slug = static::generateUniqueSlug($berita->judul);
-        });
-    }
+    // protected static function boot(): void
+    // {
+    //     parent::boot();
+    //     static::creating(function (Berita $berita) {
+    //         $berita->slug = static::generateUniqueSlug($berita->judul);
+    //     });
+    // }
 
     public static function generateUniqueSlug(string $judul): string
     {

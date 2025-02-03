@@ -42,7 +42,6 @@
                           <input
                             type="file"
                             class="form-control-file"
-                            id="exampleFormControlFile1"
                             name="gambar"
                           />
                         </div>
@@ -51,9 +50,9 @@
                           <input
                             type="text"
                             class="form-control"
-                            id="email2"
                             placeholder="Masukan Judul"
                             name="judul"
+                            required
                           />
                           <small id="emailHelp2" class="form-text text-muted"
                             >Msukan Judul berita untuk di posting</small
@@ -63,8 +62,8 @@
                           <label for="largeSelect">Pilih Kategori</label>
                           <select
                             class="form-select form-control-lg"
-                            id="largeSelect"
                             name="kategori_id"
+                            required
                           >
                           <option>-- Pilih Kategori --</option>
                           @foreach ($kategori as $data)
@@ -77,26 +76,25 @@
                           <input
                             type="text"
                             class="form-control"
-                            id="password"
                             placeholder="Msukan Deksripsi singkat"
                             name="desk_singkat"
+                            required
                           />
                         </div>
                   
                         <div class="form-group">
                           <label for="des_detail">Deskripsi Panjang</label>
-                          <textarea class="form-control" id="comment" rows="5" name="desk_detail">
+                          <textarea class="form-control" rows="5" name="desk_detail" required>
                           </textarea>
                         </div>
+                        <div class="card-action">
+                          <button class="btn btn-success" type="submit">Submit</button>
+                          <button class="btn btn-danger">Cancel</button>
+                        </div>
+                      </form>
                   </div>
-              
                 </div>
               </div>
-              <div class="card-action">
-                <button class="btn btn-success">Submit</button>
-                <button class="btn btn-danger">Cancel</button>
-              </div>
-            </form>
             </div>
           </div>
         </div>

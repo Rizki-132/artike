@@ -12,8 +12,8 @@ class BeritaController extends Controller
      */
     public function index()
     {
-        
-        return view('admin.berita.tabel');
+        $berita = Berita::all();
+        return view('admin.berita.tabel', compact('berita'));
     }
 
     /**
@@ -30,28 +30,38 @@ class BeritaController extends Controller
      */
     public function store(Request $request)
     {
-       
-        //Validasi input
         $validated = $request->validate([
-            'gambar' => 'required|image|mimes:jpeg,png,jpg|max:2048', // maksimum ukuran 2mb
-            'judul' => 'required|string|unique:beritas,judul',
-            'kategori_id' => 'required|integer|exists:kategori,id', //pastikan kategori valid
-            'desk_singkat' => 'required|string|max:500',
-            'desk_detail' => 'required|string',
+            'gambar' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'judul' => 'required|unique:berita,judul|max:255',
+            'kategori_id' => 'required|exists:kategori,id',
+            'desk_singkat' => 'required',
+            'desk_detail' => 'required',
         ]);
- 
-        $path = $request->file('gambar')->store('berita', 'public');
-
-
-       Berita::create([
+    
+        // Buat slug unik dari judul
+        $slug = Str::slug($validated['judul']);
+    
+        // Handle Upload Gambar
+        if ($request->hasFile('gambar')) {
+            $file = $request->file('gambar');
+            $filename = time() . '-' . Str::slug($file->getClientOriginalName()); // Nama unik
+            $file->move(public_path('uploads/berita'), $filename); // Simpan ke folder public/uploads/berita
+            $imagePath = 'uploads/berita/' . $filename;
+        } else {
+            $imagePath = null;
+        }
+    
+        // Simpan ke database
+        Berita::create([
             'judul' => $validated['judul'],
+            'slug' => $slug,
             'kategori_id' => $validated['kategori_id'],
             'desk_singkat' => $validated['desk_singkat'],
             'desk_detail' => $validated['desk_detail'],
-            'gambar' => $path,
+            'gambar' => $imagePath,
         ]);
-        
-        return redirect()->route('berita.index')->with('succes','Berita berhasil di tambahkan');
+    
+        return redirect()->route('berita.index')->with('success', 'Berita berhasil ditambahkan!');
     }
 
     /**

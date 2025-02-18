@@ -41,8 +41,8 @@
                           >
                           <input
                             type="file"
-                            class="form-control-file"
                             name="gambar"
+                            required
                           />
                         </div>
                         <div class="form-group">
@@ -67,7 +67,7 @@
                           >
                           <option>-- Pilih Kategori --</option>
                           @foreach ($kategori as $data)
-                            <option>{{ $data->nama }}</option>
+                            <option value="{{ $data->id }}">{{ $data->nama }}</option>
                           @endforeach
                           </select>
                         </div>

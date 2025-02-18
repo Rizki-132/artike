@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Berita;
 use App\Models\Kategori;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class BeritaController extends Controller
 {
@@ -30,18 +31,21 @@ class BeritaController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
         $validated = $request->validate([
             'gambar' => 'required|image|mimes:jpeg,png,jpg|max:2048',
-            'judul' => 'required|unique:berita,judul|max:255',
-            'kategori_id' => 'required|exists:kategori,id',
+            'judul' => 'required|unique:beritas,judul|max:255',
+            'kategori_id' => 'required|exists:kategoris,id',
             'desk_singkat' => 'required',
             'desk_detail' => 'required',
-        ]);
+        ],
+    );
     
         // Buat slug unik dari judul
         $slug = Str::slug($validated['judul']);
     
         // Handle Upload Gambar
+     
         if ($request->hasFile('gambar')) {
             $file = $request->file('gambar');
             $filename = time() . '-' . Str::slug($file->getClientOriginalName()); // Nama unik
@@ -60,6 +64,7 @@ class BeritaController extends Controller
             'desk_detail' => $validated['desk_detail'],
             'gambar' => $imagePath,
         ]);
+      
     
         return redirect()->route('berita.index')->with('success', 'Berita berhasil ditambahkan!');
     }

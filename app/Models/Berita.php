@@ -28,12 +28,12 @@ class Berita extends Model
     //     });
     // }
 
-    public static function generateUniqueSlug(string $judul): string
-    {
-        $slug = Str::slug($judul);
-        $count = static::where('slug', 'like', "{$slug}%")->count();
-        return $count ? "{$slug}-{$count}" : $slug;
-    }
+    // public static function generateUniqueSlug(string $judul): string
+    // {
+    //     $slug = Str::slug($judul);
+    //     $count = static::where('slug', 'like', "{$slug}%")->count();
+    //     return $count ? "{$slug}-{$count}" : $slug;
+    // }
 
     // untuk relasi
     public function kategori()

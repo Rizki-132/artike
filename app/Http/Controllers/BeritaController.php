@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Berita;
 use App\Models\Kategori;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class BeritaController extends Controller
@@ -13,8 +14,8 @@ class BeritaController extends Controller
      */
     public function index()
     {
-        $berita = Berita::all();
-        return view('admin.berita.tabel', compact('berita'));
+        $data = Berita::with('kategori')->get();
+        return view('admin.berita.tabel', compact('data'));
     }
 
     /**
@@ -56,17 +57,25 @@ class BeritaController extends Controller
         }
     
         // Simpan ke database
-        Berita::create([
-            'judul' => $validated['judul'],
-            'slug' => $slug,
-            'kategori_id' => $validated['kategori_id'],
-            'desk_singkat' => $validated['desk_singkat'],
-            'desk_detail' => $validated['desk_detail'],
-            'gambar' => $imagePath,
-        ]);
-      
+        try {
+            // Kode untuk memasukkan data ke database
+            $data = Berita::create([
+                'judul' => $validated['judul'],
+                'slug' => $slug,
+                'kategori_id' => $validated['kategori_id'],
+                'desk_singkat' => $validated['desk_singkat'],
+                'desk_detail' => $validated['desk_detail'],
+                'gambar' => $imagePath,
+            ]);
     
-        return redirect()->route('berita.index')->with('success', 'Berita berhasil ditambahkan!');
+            return redirect()->route('berita.index')->with('success', 'Berita berhasil ditambahkan!');
+        } catch (\Exception $e) {
+            // Kode untuk menangani error
+            return redirect()->back()->with('error', 'Gagal menambahkan berita!');
+        }
+    
+    
+        
     }
 
     /**

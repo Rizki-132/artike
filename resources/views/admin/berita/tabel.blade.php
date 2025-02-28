@@ -53,7 +53,6 @@
                         <th>Deskripsi detail</th>
                         <th>Kategori</th>
                         <th>Gambar</th>
-                        <th>Action</th>
                       </tr>
                     </thead>
                     <tfoot>
@@ -66,6 +65,10 @@
                       </tr>
                     </tfoot>
                     <tbody>
+                      @php
+                        use App\Models\Berita;
+                        $data = Berita::with('kategori')->get();   
+                      @endphp
                       @foreach ($data as $item)
                         <tr>
                           <td>{{ $item->judul }}</td>
@@ -73,32 +76,8 @@
                           <td>{{ $item->desk_detail }}</td>
                           <td>{{ $item->Kategori->nama ?? 'Tidak Ada Kategori' }}</td>
                           <td>
-                            @if($item->gambar)
-                               <img src="{{ asset('uploads/berita/' . $item->gambar) }}" alt="Gambar Berita" width="100">
-                            @else
-                               <p>Tidak ada gambar</p>
-                            @endif
+                              <img src="{{ asset('storage/' . $item->gambar) }}" alt="Gambar Berita" width="100">
                           </td>
-                          <td> <div class="form-button-action">
-                            <button
-                              type="button"
-                              data-bs-toggle="tooltip"
-                              title=""
-                              class="btn btn-link btn-primary btn-lg"
-                              data-original-title="Edit Task"
-                            >
-                              <i class="fa fa-edit"></i>
-                            </button>
-                            <button
-                              type="button"
-                              data-bs-toggle="tooltip"
-                              title=""
-                              class="btn btn-link btn-danger"
-                              data-original-title="Remove"
-                            >
-                              <i class="fa fa-times"></i>
-                            </button>
-                          </div></td>
                         </tr>
                       @endforeach
                     </tbody>

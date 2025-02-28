@@ -89,7 +89,7 @@
                         </div>
                         <div class="card-action">
                           <button class="btn btn-success" type="submit">Submit</button>
-                          <button class="btn btn-danger">Cancel</button>
+                          <button class="btn btn-warning"><a href="{{ route('berita.index') }}">Kembali</a></button>
                         </div>
                       </form>
                   </div>

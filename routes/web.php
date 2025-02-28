@@ -27,25 +27,20 @@ Route::get('/dashboard', function () {
     return view('admin.admin');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-// Route::get('/form', function () {
-//     return view('admin.form');
-// })->middleware(['auth', 'verified'])->name('dashboard');
-
-// Route::get('/kategori', function () {
-//     return view('admin.kategori');
-// })->middleware(['auth', 'verified'])->name('dashboard');
-
-// Route::get('/tabel', function () {
-//     return view('admin.tabel');
-// })->middleware(['auth', 'verified'])->name('dashboard');
-
-
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::resource('berita', BeritaController::class);
+    // normal
+    // Route::get('berita', [BeritaController::class, 'index'])->name('berita.index');
+    // Route::get('berita/create', [BeritaController::class, 'create'])->name('berita.create');
+    // Route::post('berita', [BeritaController::class, 'store'])->name('berita.store');
+
+
+
+
     Route::resource('kategori', KategoriController::class);
 });
 

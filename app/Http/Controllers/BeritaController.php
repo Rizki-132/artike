@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
+
 class BeritaController extends Controller
 {
     /**
@@ -15,7 +16,9 @@ class BeritaController extends Controller
     public function index()
     {
         $data = Berita::with('kategori')->get();
-        return view('admin.berita.tabel', compact('data'));
+        // dd($data);
+      return view('admin.berita.tabel', compact('data'));
+
     }
 
     /**
@@ -23,8 +26,10 @@ class BeritaController extends Controller
      */
     public function create()
     {
-        $kategori = Kategori::all();
-        return view('admin.berita.create',compact('kategori'));
+        $kategori = Kategori::get();
+        $data = Berita::with('kategori')->get();
+        // dd($kategori);
+        return view('admin.berita.create', compact('kategori','data'));
     }
 
     /**
@@ -59,7 +64,7 @@ class BeritaController extends Controller
         // Simpan ke database
         try {
             // Kode untuk memasukkan data ke database
-            $data = Berita::create([
+            Berita::create([
                 'judul' => $validated['judul'],
                 'slug' => $slug,
                 'kategori_id' => $validated['kategori_id'],
@@ -67,7 +72,7 @@ class BeritaController extends Controller
                 'desk_detail' => $validated['desk_detail'],
                 'gambar' => $imagePath,
             ]);
-    
+            
             return redirect()->route('berita.index')->with('success', 'Berita berhasil ditambahkan!');
         } catch (\Exception $e) {
             // Kode untuk menangani error
